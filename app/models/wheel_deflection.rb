@@ -1,0 +1,2 @@
+class WheelDeflection < ApplicationRecord
+end

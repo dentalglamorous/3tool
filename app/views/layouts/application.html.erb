@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tool3App">
+  <head>
+    <title>ToolThree</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <link rel="stylesheet" href="/app/lib/angular-1.6.4/angular-csp.css" type="text/css" media="print" />
+
+    <script src="/app/lib/angular-1.6.4/angular.min.js"></script>
+    <script src="/app/lib/angular-1.6.4/angular-route.min.js"></script>
+    <script src="/app/lib/angular-1.6.4/angular-resource.min.js"></script>
+    <script src="/app/lib/ui-bootstrap-tpls-0.13.0.min.js"></script>
+
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers.js"></script>
+    <script src="/app/services.js"></script>
+    <script src="/app/directives.js"></script>
+    <script src="/app/filters.js"></script>
+
+    <!-- set up base url-->
+    <base href="/">
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Tool 3</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/#">Wheel Deflections</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="starter-template">
+        <%#= yield %>
+        <div ng-view class="view-frame"></div>
+      </div>
+    </div><!-- /.container -->
+
+    <script type="text/ng-template" id="index.html" ng-cloak>
+      <!-- <h1>Wheel deflections</h1> -->
+
+
+      <button class="btn btn-primary pull-left" ng-click="createWheelDeflections()">New wheel deflection</button>
+
+
+      <table class="table table-hover"> 
+        <thead> 
+          <tr> 
+            <th>#</th> 
+            <th>Name</th> 
+            <th>Description</th> 
+            <th>Action</th> 
+          </tr> 
+        </thead> 
+
+        <tbody class="text-left"> 
+          <tr ng-repeat="wd in wheelDeflections"> 
+            <th scope="row">{{wd.id}}</th> 
+            <td>{{wd.name}}</td> 
+            <td>{{wd.description}}</td> 
+            <td>
+              <a href="/wheel-deflections/{{wd.id}}">Show</a> | 
+              <a href="/wheel-deflections/{{wd.id}}/edit">Edit</a> |
+              <a href="#" ng-click="deleteWheelDeflection(wd.id, $index)">Delete</a>
+            </td>            
+          <tr> 
+        </tbody> 
+      </table>
+    </script>
+
+    <!-- New wheel deflection create modal -->
+    <script type="text/ng-template" id="new-wheel-deflection-modal.html">
+      <div class="modal-header">
+        <h3 class="modal-title">New wheel deflections</h3>
+      </div>
+      <div class="modal-body ">
+        <form ng-submit="submitWheelDeflection()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" ng-model="newWD.name" />
+          </div>
+          <div class="form-group">
+            <label for="name">Description</label>
+            <textarea class="form-control" id="name" rows="3" ng-model="newWD.description"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" ng-disabled="">Submit</button>
+          <button class="btn btn-primary" type="button" ng-click="close()">Cancel</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        &nbsp;
+      </div>
+    </script>
+    <!-- End -->
+
+    <script type="text/ng-template" id="show.html" ng-cloak>
+      <div class="row" id="wheel-deflections">
+        <h1 class="text-left">{{deflection.name}}</h1>
+
+        <table class="table">
+          <tbody>
+            <!--<tr>-->
+              <!--<th width="70%">&nbsp;</th>-->
+              <!--<th width="30%">&nbsp;</th>-->
+            <!--</tr>-->
+          </tbody>
+          <tbody class="text-left">
+            <tr class="info">
+              <td>Deflection(units)</td>
+              <td>-</td>
+            </tr>
+            <tr class="info">
+              <td>Deflection(%)</td>
+              <td>-</td>
+            </tr>
+            <tr class="info">
+              <td>Contact Area footprint (units)</td>
+              <td>-</td>
+            </tr>
+            <tr class="info">
+              <td>Footprint Stress</td>
+              <td>-</td>
+            </tr>
+            <tr class="info">
+              <td>Ideal Max Load (%3 deflection) (units)</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="btn-group pull-left" role="group" aria-label="...">
+          <button type="button" class="btn btn-default" ng-click="print()">Print</button>
+          <a type="button" class="btn btn-default" href="https://www.facebook.com/sharer/sharer.php?u=https://wheeldeflection.herokuapp.com/wheel-deflections/{{deflection.id}}" target="_blank">
+            Share on Facebook
+          </a>
+          <button type="button" class="btn btn-default" ng-click="print()">PDF</button>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="edit.html">
+      <div class="row"></div>
+      <div class="row">
+        <div class="col-sm-2" style="z-index: 1000;">
+          <div class="row">
+            <button class="btn btn-primary btn-xs btn-compression-module pull-right" ng-click="openDeflectionProperty('CM')">Compression Modulus</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-primary btn-xs btn-outside-radius pull-right" ng-click="openDeflectionProperty('OR')">Outside Radius</button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-primary btn-xs" ng-click="openDeflectionProperty('TW')">Tire Width</button>
+
+          <%= image_tag 'cover-photo.png', style: 'width: 350px; padding:10px;' %>
+        </div>
+        <div class="col-sm-2" style="z-index: 1000;">
+          <div class="row">
+            <button class="btn btn-primary btn-xs btn-load-on-wheel pull-left" style="" ng-click="openDeflectionProperty('LOW')">Load on Wheel</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-primary btn-xs btn-tread-thickness pull-left" ng-click="openDeflectionProperty('TH')">Tread Thickness</button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <ng-include src="'show.html'"></ng-include>
+        </div>
+      </div>
+      <a class="pull-left" href="/wheel-deflections/{{deflection.id}}">Calculations</a>
+    </script>
+
+    <!-- New wheel deflection property modal -->
+    <script type="text/ng-template" id="add-deflection-property-modal.html">
+      <div class="modal-header">
+        <h3 class="modal-title">Wheel deflections property</h3>
+      </div>
+      <div class="modal-body ">
+        <form ng-submit="submitDeflectionProperty()">
+          <div class="" ng-show="deflection.type === 'TW'">
+            <div class="form-group">
+              <label for="tire-width">Tire Width</label>
+              <input type="text" class="form-control" id="tire-width" ng-model="deflection.tire_width" />
+            </div>
+            <div class="form-group">
+              <label for="tire-width-unit">Unit</label>
+              <input type="text" class="form-control" id="tire-width-unit" ng-model="deflection.tire_width_unit" />
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <div class="" ng-show="deflection.type === 'CM'">
+            <div class="form-group">
+              <label for="compression-modulus">Compression Modulus</label>
+              <input type="text" class="form-control" id="compression-modulus" ng-model="deflection.compression_modulus" />
+            </div>
+            <div class="form-group">
+              <label for="compression-modulus-unit">Unit</label>
+              <input type="text" class="form-control" id="compression-modulus-unit" ng-model="deflection.compression_modulus_unit" />
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <div class="" ng-show="deflection.type === 'LOW'">
+            <div class="form-group">
+              <label for="load-on-wheel">Load on Wheel</label>
+              <input type="text" class="form-control" id="load-on-wheel" ng-model="deflection.load_on_wheel" />
+            </div>
+            <div class="form-group">
+              <label for="load-on-wheel-unit">Unit</label>
+              <input type="text" class="form-control" id="load-on-wheel-unit" ng-model="deflection.load_on_wheel_unit" />
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <div class="" ng-show="deflection.type === 'OR'">
+            <div class="form-group">
+              <label for="outside-radius">Outside Radius</label>
+              <input type="text" class="form-control" id="outside-radius" ng-model="deflection.outside_radius" />
+            </div>
+            <div class="form-group">
+              <label for="outside-radius-unit">Unit</label>
+              <input type="text" class="form-control" id="outside-radius-unit" ng-model="deflection.outside_radius_unit" />
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <div class="" ng-show="deflection.type === 'TH'">
+            <div class="form-group">
+              <label for="tread-thicknes">Tread Thicknes</label>
+              <input type="text" class="form-control" id="tread-thicknes" ng-model="deflection.tread_thicknes" />
+            </div>
+            <div class="form-group">
+              <label for="tread-thicknes-unit">Unit</label>
+              <input type="text" class="form-control" id="tread-thicknes-unit" ng-model="deflection.tread_thickness_unit" />
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <input type="hidden" ng-model="deflection.type" />
+          <button class="btn btn-primary" type="submit" ng-disabled="">Submit</button>
+          <button class="btn btn-primary" type="button" ng-click="resetWheelDeflections()">Reset</button>
+          <button class="btn btn-primary" type="button" ng-click="close()">Cancel</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        &nbsp;
+      </div>
+    </script>
+    <!-- End -->
+
+    <script type="text/ng-template" id="404.html">
+      <div class="both-center">
+        <h1 class="text-center">404</h1>
+        <br />
+        <h3 class="text-center">Oops! Page you are looking for is not found!</h3>
+      </div>
+    </script>
+
+  </body>
+</html>
