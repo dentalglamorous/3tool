@@ -1,0 +1,27 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.btn-load-on-wheel {
+  margin-top: 165px;
+  margin-left: -115px;
+}
+
+.btn-tread-thickness {
+  margin-top: 130px;
+  margin-left: -115px;
+}
+
+.btn-compression-module {
+  margin-top: 60px;
+  margin-right: -257px;
+}
+
+.btn-outside-radius {
+  margin-top: 170px;
+  margin-right: -115px;
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tool3App">
+  <head>
+    <title>ToolThree</title>    
+    
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/application.css">
+    <link rel="stylesheet" href="./assets/javascripts/angular-1.6.4/angular-csp.css" type="text/css" media="print" />
+
+    <script src="./assets/javascripts/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="./assets/javascripts/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="./assets/javascripts/angular-1.6.4/angular.min.js"></script>
+    <script src="./assets/javascripts/angular-1.6.4/angular-route.min.js"></script>
+    <script src="./assets/javascripts/angular-1.6.4/angular-resource.min.js"></script>
+    <script src="./assets/javascripts/ui-bootstrap-tpls-0.13.0.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="./app/controllers.js"></script>
+    <script src="./app/services.js"></script>
+    <script src="./app/directives.js"></script>
+    <script src="./app/filters.js"></script>
+
+    <!-- set up base url-->
+    <base href="/">
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Tool 3</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/3tool">Wheel Deflections</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="starter-template">        
+        <div ng-view class="view-frame"></div>
+      </div>
+    </div><!-- /.container -->    
+    <!-- End -->
+
+    <script type="text/ng-template" id="show.html" ng-cloak>
+      <div class="row" id="wheel-deflections">
+        <h1 class="text-left">&nbsp;</h1>
+
+        <table class="table">
+          <tbody>
+            <!--<tr>-->
+              <!--<th width="70%">&nbsp;</th>-->
+              <!--<th width="30%">&nbsp;</th>-->
+            <!--</tr>-->
+          </tbody>
+          <tbody class="text-left">
+            <tr class="info">
+              <td>Deflection(units)</td>
+              <td>-</td>
+            </tr>
+            <tr class="info">
+              <td>Deflection(%)</td>
+              <td>-</td>
+            </tr>
+            <tr class="info">
+              <td>Contact Area footprint (units)</td>
+              <td>-</td>
+            </tr>
+            <tr class="info">
+              <td>Footprint Stress</td>
+              <td>-</td>
+            </tr>
+            <tr class="info">
+              <td>Ideal Max Load (%3 deflection) (units)</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="btn-group pull-left" role="group" aria-label="...">
+          <button type="button" class="btn btn-default" ng-click="print()">Print</button>
+          <a type="button" class="btn btn-default" href="https://www.facebook.com/sharer/sharer.php?u=https://wheeldeflection.herokuapp.com/wheel-deflections/{{deflection.id}}" target="_blank">
+            Share on Facebook
+          </a>
+          <button type="button" class="btn btn-default" ng-click="print()">PDF</button>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="wheel-deflection.html">
+      <div class="row"></div>
+      <div class="row">
+        <div class="col-sm-2" style="z-index: 1000;">
+          <div class="row">
+            <button class="btn btn-xs btn-compression-module pull-right" ng-class="compressionModulusBG()" ng-click="openDeflectionProperty('CM')">{{compressionModulusBtn()}}</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-xs btn-outside-radius pull-right" ng-class="outsideRadiusBG()" ng-click="openDeflectionProperty('OR')">{{outsideRadiusBtn()}}</button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-xs" ng-class="tireWidthBG()" ng-click="openDeflectionProperty('TW')">{{tireWidthBtn()}}</button>
+
+          <img src="./3tool/assets/images/cover-photo.png" style="width: 350px; padding:10px;" />
+        </div>
+        <div class="col-sm-2" style="z-index: 1000;">
+          <div class="row">
+            <button class="btn btn-xs btn-load-on-wheel pull-left" ng-class="loadOnWheelBG()" ng-click="openDeflectionProperty('LOW')">{{loadOnWheelBtn()}}</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-xs btn-tread-thickness pull-left" ng-class="treadThicknessBG()" ng-click="openDeflectionProperty('TH')">{{treadThicknessBtn()}}</button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <ng-include src="'show.html'"></ng-include>
+        </div>
+      </div>      
+    </script>
+
+    <!-- New wheel deflection property modal -->
+    <script type="text/ng-template" id="add-deflection-property-modal.html">
+      <div class="modal-header">
+        <h3 class="modal-title">Wheel deflections property</h3>
+      </div>
+      <div class="modal-body ">
+        <form ng-submit="submitDeflectionProperty()">
+          <div class="" ng-show="wd.type === 'TW'">
+            <div class="form-group">
+              <label for="tire-width">Tire Width</label>
+              <input type="text" class="form-control" id="tire-width" ng-model="wd.tire_width.value" />
+            </div>
+            <div class="form-group">
+              <label for="tire-width-unit">Unit</label>              
+              <select class="form-control" ng-model="wd.tire_width.unit">
+                <option value="centimeters">Centimeters</option>
+                <option value="decimeters">Decimeters</option>
+                <option value="fathoms">Fathoms</option>  
+                <option value="feet">Feet</option> 
+                <option value="furlongs">Furlongs</option> 
+                <option value="inches">Inches</option> 
+                <option value="kilometers">Kilometers</option> 
+                <option value="meters">Meters</option> 
+                <option value="micrometers">Micrometers</option> 
+                <option value="miles">Miles</option>   
+                <option value="milimeters">Milimeters</option>  
+                <option value="nautical miles">Nautical miles</option>  
+                <option value="picas">Picas</option>  
+                <option value="pixels">Pixels</option>  
+                <option value="points">Points</option> 
+                <option value="yards">Yards</option> 
+              </select>
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <div class="" ng-show="wd.type === 'CM'">
+            <div class="form-group">
+              <label for="compression-modulus">Compression Modulus</label>
+              <input type="text" class="form-control" id="compression-modulus" ng-model="wd.compression_modulus.value" />
+            </div>
+            <div class="form-group">
+              <label for="compression-modulus-unit">Unit</label>              
+              <select class="form-control" ng-model="wd.compression_modulus.unit">
+                <option value="bars">Bars</option>
+                <option value="decapascals">Decapascals</option>
+                <option value="gigapascals">Gigapascals</option>   
+                <option value="kilo pounds/in^2">Kilo pounds/in^2</option>
+                <option value="kilopascals">Kilopascals</option>
+                <option value="megapascals">Megapascals</option>
+                <option value="pascals">Pascals</option>
+                <option value="atmospheres">Atmospheres</option>
+                <option value="pounds/ft^2">Pounds/ft^2</option>
+                <option value="pounds/in^2">Pounds/in^2</option>
+                <option value="torr">Torr</option>
+              </select>
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <div class="" ng-show="wd.type === 'LOW'">
+            <div class="form-group">
+              <label for="load-on-wheel">Load on Wheel</label>
+              <input type="text" class="form-control" id="load-on-wheel" ng-model="wd.load_on_wheel.value" />
+            </div>
+            <div class="form-group">
+              <label for="load-on-wheel-unit">Unit</label>              
+              <select class="form-control" ng-model="wd.load_on_wheel.unit">
+                <option value="grains">Grains</option>
+                <option value="grams">Grams</option>
+                <option value="kilograms">Kilograms</option>     
+                <option value="milligrams">Milligrams</option>     
+                <option value="ounces">Ounces</option>     
+                <option value="pounds">Pounds</option>     
+                <option value="stones">Stones</option>     
+                <option value="tons">Tons</option>     
+                <option value="tons long">Tons long</option>     
+                <option value="tons short">Tons short</option>     
+                <option value="troy ounces">Troy ounces</option>                
+              </select>
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <div class="" ng-show="wd.type === 'OR'">
+            <div class="form-group">
+              <label for="outside-radius">Outside Radius</label>
+              <input type="text" class="form-control" id="outside-radius" ng-model="wd.outside_radius.value" />
+            </div>
+            <div class="form-group">
+              <label for="outside-radius-unit">Unit</label>              
+              <select class="form-control" ng-model="wd.outside_radius.unit">
+                <option value="centimeters">Centimeters</option>
+                <option value="decimeters">Decimeters</option>
+                <option value="fathoms">Fathoms</option>  
+                <option value="feet">Feet</option> 
+                <option value="furlongs">Furlongs</option> 
+                <option value="inches">Inches</option> 
+                <option value="kilometers">Kilometers</option> 
+                <option value="meters">Meters</option> 
+                <option value="micrometers">Micrometers</option> 
+                <option value="miles">Miles</option>   
+                <option value="milimeters">Milimeters</option>  
+                <option value="nautical miles">Nautical miles</option>  
+                <option value="picas">Picas</option>  
+                <option value="pixels">Pixels</option>  
+                <option value="points">Points</option> 
+                <option value="yards">Yards</option>               
+              </select>
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <div class="" ng-show="wd.type === 'TH'">
+            <div class="form-group">
+              <label for="tread-thicknes">Tread Thicknes</label>
+              <input type="text" class="form-control" id="tread-thicknes" ng-model="wd.tread_thickness.value" />
+            </div>
+            <div class="form-group">
+              <label for="tread-thicknes-unit">Unit</label>              
+              <select class="form-control" ng-model="wd.tread_thickness.unit">
+                <option value="centimeters">Centimeters</option>
+                <option value="decimeters">Decimeters</option>
+                <option value="fathoms">Fathoms</option>  
+                <option value="feet">Feet</option> 
+                <option value="furlongs">Furlongs</option> 
+                <option value="inches">Inches</option> 
+                <option value="kilometers">Kilometers</option> 
+                <option value="meters">Meters</option> 
+                <option value="micrometers">Micrometers</option> 
+                <option value="miles">Miles</option>   
+                <option value="milimeters">Milimeters</option>  
+                <option value="nautical miles">Nautical miles</option>  
+                <option value="picas">Picas</option>  
+                <option value="pixels">Pixels</option>  
+                <option value="points">Points</option> 
+                <option value="yards">Yards</option>             
+              </select>
+              <p class="help-block">* Note: Units (enter the abbreviation, for example: cm for centimeters).</p>
+            </div>
+          </div>
+
+          <input type="hidden" ng-model="wd.type" />
+          <button class="btn btn-primary" type="submit" ng-disabled="">Set</button>
+          <button class="btn btn-primary" type="button" ng-click="resetWheelDeflections()">Reset</button>
+          <button class="btn btn-primary" type="button" ng-click="close()">Cancel</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        &nbsp;
+      </div>
+    </script>
+    <!-- End -->
+
+    <script type="text/ng-template" id="404.html">
+      <div class="both-center">
+        <h1 class="text-center">404</h1>
+        <br />
+        <h3 class="text-center">Oops! Page you are looking for is not found!</h3>
+      </div>
+    </script>
+
+  </body>
+</html>
