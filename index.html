@@ -56,57 +56,10 @@
       </div>
     </div><!-- /.container -->    
     <!-- End -->
-
-    <script type="text/ng-template" id="show.html" ng-cloak>
-      <div class="row" id="wheel-deflections">
-        <h1 class="text-left">&nbsp;</h1>
-
-        <table class="table">
-          <tbody>
-            <!--<tr>-->
-              <!--<th width="70%">&nbsp;</th>-->
-              <!--<th width="30%">&nbsp;</th>-->
-            <!--</tr>-->
-          </tbody>
-          <tbody class="text-left">
-            <tr class="info">
-              <td>Deflection(units)</td>
-              <td>-</td>
-            </tr>
-            <tr class="info">
-              <td>Deflection(%)</td>
-              <td>-</td>
-            </tr>
-            <tr class="info">
-              <td>Contact Area footprint (units)</td>
-              <td>-</td>
-            </tr>
-            <tr class="info">
-              <td>Footprint Stress</td>
-              <td>-</td>
-            </tr>
-            <tr class="info">
-              <td>Ideal Max Load (%3 deflection) (units)</td>
-              <td>-</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
+  
+    <script type="text/ng-template" id="wheel-deflection.html">      
       <div class="row">
-        <div class="btn-group pull-left" role="group" aria-label="...">
-          <button type="button" class="btn btn-default" ng-click="print()">Print</button>
-          <a type="button" class="btn btn-default" href="https://www.facebook.com/sharer/sharer.php?u=https://wheeldeflection.herokuapp.com/wheel-deflections/{{deflection.id}}" target="_blank">
-            Share on Facebook
-          </a>
-          <button type="button" class="btn btn-default" ng-click="print()">PDF</button>
-        </div>
-      </div>
-    </script>
-
-    <script type="text/ng-template" id="wheel-deflection.html">
-      <div class="row"></div>
-      <div class="row">
+        <div class="col-sm-2">&nbsp;</div>
         <div class="col-sm-2" style="z-index: 1000;">
           <div class="row">
             <button class="btn btn-xs btn-compression-module pull-right" ng-class="compressionModulusBG()" ng-click="openDeflectionProperty('CM')">{{compressionModulusBtn()}}</button>
@@ -127,11 +80,45 @@
           <div class="row">
             <button class="btn btn-xs btn-tread-thickness pull-left" ng-class="treadThicknessBG()" ng-click="openDeflectionProperty('TH')">{{treadThicknessBtn()}}</button>
           </div>
+        </div> 
+        <div class="col-sm-2">&nbsp;</div>       
+      </div>   
+
+      <div class="row">
+          <ng-include src="'calculation.html'"></ng-include>
+      </div>   
+    </script>
+
+    <script type="text/ng-template" id="calculation.html" ng-cloak>
+      <div class="col-sm-4 col-sm-offset-4" id="wheel-deflections">        
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <div class="row">Result</div>
+            <div class="row">
+              Wt.Ratio
+              <br />
+              <b>0,0000</b>
+            </div>
+            <hr />
+
+            <div class="row">
+              Volume Ratio
+              <br />
+              <b>0,0000</b>
+            </div>
+          </div>        
         </div>
-        <div class="col-sm-4">
-          <ng-include src="'show.html'"></ng-include>
+
+        <!-- Share, Print & PDF Report buttons-->
+        <div class="btn-group pull-left" role="group" aria-label="...">
+          <button type="button" class="btn btn-default" ng-click="print()">Print</button>
+          <a type="button" class="btn btn-default" href="https://www.facebook.com/sharer/sharer.php?u=https://wheeldeflection.herokuapp.com/wheel-deflections/{{deflection.id}}" target="_blank">
+            Share on Facebook
+          </a>
+          <button type="button" class="btn btn-default" ng-click="print()">PDF</button>
         </div>
-      </div>      
+      </div>
+      
     </script>
 
     <!-- New wheel deflection property modal -->
