@@ -1,2 +1,0 @@
-class WheelDeflection < ApplicationRecord
-end
