@@ -137,6 +137,36 @@ tool3Controllers.controller('MainCtrl', ['$scope', '$rootScope', '$modal', '$win
         return label;
     };
 
+    // check tire width is present
+    $scope.hasTireWidth = function() {
+        return $scope.wd.tire_width.value != null && $scope.wd.tire_width.unit != null;
+    };
+
+    // check compression modulus is present
+    $scope.hasCompressionModulus = function() {
+        return $scope.wd.compression_modulus.value != null && $scope.wd.compression_modulus.unit != null;
+    };
+
+    // check outside radius is present
+    $scope.hasOutsideRadius = function() {
+        return $scope.wd.outside_radius.value != null && $scope.wd.outside_radius.unit != null;
+    };
+
+    // check load on wheel is present
+    $scope.hasLoadOnWheel = function() {
+        return $scope.wd.load_on_wheel.value != null && $scope.wd.load_on_wheel.unit != null;
+    };
+
+    // check tread thickness is present
+    $scope.hasTreadThickness = function() {
+        return $scope.wd.tread_thickness.value != null && $scope.wd.tread_thickness.unit != null;
+    };
+
+    // check empty of wheel deflection properties
+    $scope.isAllEmpty = function() {
+        return $scope.hasTireWidth() || $scope.hasCompressionModulus() || $scope.hasOutsideRadius || $scope.hasOutsideRadius || $scope.hasLoadOnWheel() || $scope.hasTreadThickness();
+    };
+
     $scope.openDeflectionProperty = function (dt) {
         $scope.wd.type = dt;
         $scope.$modalInstance = $modal.open({

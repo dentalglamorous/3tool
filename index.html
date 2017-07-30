@@ -97,6 +97,18 @@
         </div>
       </div>
 
+      <div class="col-sm-4 col-sm-offset-4" ng-show="isAllEmpty()">
+        <p>
+          The boxes 
+          <a href="#" ng-click="" ng-hide="hasTireWidth()">Tire Width</a> 
+          <a href="#" ng-click="" ng-hide="hasCompressionModulus()">Compression Modulus</a> 
+          <a href="#" ng-click="" ng-hide="hasOutsideRadius()">Outside Radius</a>
+          <a href="#" ng-click="" ng-hide="hasLoadOnWheel()">Load on Wheel</a>
+          <a href="#" ng-click="" ng-hide="hasTreadThickness()">Tread Thickness</a> 
+          must be filled to do the calculations.
+        </p>
+      </div>
+
       <!-- Share, Print & PDF Report buttons-->
       <div class="col-sm-4 col-sm-offset-4">
         <div class="btn-group pull-left" role="group" aria-label="...">          
@@ -115,7 +127,7 @@
           <button type="button" class="btn btn-default" ng-click="print()"><i class="fa fa-print" style="font-size:18px; color: blue;"></i></button>
           <button type="button" class="btn btn-default" ng-click="print()"><i class="fa fa-file-pdf-o" style="font-size:18px; color: red;"></i></button>
         </div>
-      </div>      
+      </div>          
     </script>
 
     <!-- New wheel deflection property modal -->
