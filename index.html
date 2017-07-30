@@ -58,32 +58,19 @@
     <!-- End -->
   
     <script type="text/ng-template" id="wheel-deflection.html">      
-      <div class="row">
-        <div class="col-sm-2">&nbsp;</div>
-        <div class="col-sm-2" style="z-index: 1000;">
-          <div class="row">
-            <button class="btn btn-xs btn-compression-module pull-right" ng-class="compressionModulusBG()" ng-click="openDeflectionProperty('CM')">{{compressionModulusBtn()}}</button>
-          </div>
-          <div class="row">
-            <button class="btn btn-xs btn-outside-radius pull-right" ng-class="outsideRadiusBG()" ng-click="openDeflectionProperty('OR')">{{outsideRadiusBtn()}}</button>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <button class="btn btn-xs" ng-class="tireWidthBG()" ng-click="openDeflectionProperty('TW')">{{tireWidthBtn()}}</button>
-
-          <img src="./3tool/assets/images/cover-photo.png" style="width: 350px; padding:10px;" />
-        </div>
-        <div class="col-sm-2" style="z-index: 1000;">
-          <div class="row">
-            <button class="btn btn-xs btn-load-on-wheel pull-left" ng-class="loadOnWheelBG()" ng-click="openDeflectionProperty('LOW')">{{loadOnWheelBtn()}}</button>
-          </div>
-          <div class="row">
-            <button class="btn btn-xs btn-tread-thickness pull-left" ng-class="treadThicknessBG()" ng-click="openDeflectionProperty('TH')">{{treadThicknessBtn()}}</button>
-          </div>
-        </div> 
-        <div class="col-sm-2">&nbsp;</div>       
-      </div>   
-
+      <div class="row" style="z-index: 1000;">
+        <button class="btn btn-xs btn-compression-module" ng-class="compressionModulusBG()" ng-click="openDeflectionProperty('CM')">{{compressionModulusBtn()}}</button>
+        <button class="btn btn-xs btn-outside-radius" ng-class="outsideRadiusBG()" ng-click="openDeflectionProperty('OR')">{{outsideRadiusBtn()}}</button>
+        <button class="btn btn-xs btn-tire-width" ng-class="tireWidthBG()" ng-click="openDeflectionProperty('TW')">{{tireWidthBtn()}}</button>
+        <button class="btn btn-xs btn-tread-thickness" ng-class="treadThicknessBG()" ng-click="openDeflectionProperty('TH')">{{treadThicknessBtn()}}</button>
+        <button class="btn btn-xs btn-load-on-wheel" ng-class="loadOnWheelBG()" ng-click="openDeflectionProperty('LOW')">{{loadOnWheelBtn()}}</button>
+        
+      </div>      
+      <div class="row">                
+        <div class="col-sm-4 col-sm-offset-4">          
+          <img src="./3tool/assets/images/new-cover-photo.png" style="width: 350px; padding:10px;" />
+        </div>        
+      </div>               
       <div class="row">
           <ng-include src="'calculation.html'"></ng-include>
       </div>   

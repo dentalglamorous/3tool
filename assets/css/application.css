@@ -6,22 +6,38 @@ body {
   text-align: center;
 }
 
+
+.btn-tire-width {
+  z-index: 1000;
+  position: relative;
+  top: 40px;
+  left: -14px;
+}
+
 .btn-load-on-wheel {
-  margin-top: 165px;
-  margin-left: -115px;
+  z-index: 1000;
+  position: relative;
+  top: 210px;
+  left: -80px;
 }
 
 .btn-tread-thickness {
-  margin-top: 130px;
-  margin-left: -115px;
+  z-index: 1000;
+  position: relative;
+  top: 413px;
+  left: 50px;
 }
 
 .btn-compression-module {
-  margin-top: 60px;
-  margin-right: -257px;
+  z-index: 1000;
+  position: relative;
+  top: 100px;
+  left: 186px;
 }
 
 .btn-outside-radius {
-  margin-top: 170px;
-  margin-right: -115px;
+  z-index: 1000;
+  position: relative;
+  top: 323px;
+  left: -50px;
 }

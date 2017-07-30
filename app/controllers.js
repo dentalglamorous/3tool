@@ -128,7 +128,7 @@ tool3Controllers.controller('MainCtrl', ['$scope', '$rootScope', '$modal', '$win
 
     // Function to dynamically generate label of outside radius button
     $scope.outsideRadiusBtn = function () {
-        var label = "Compression Modulus";
+        var label = "Outside Radius";
 
         if($scope.wd.outside_radius.value != null && $scope.wd.outside_radius.unit != null) {
             label = label + " : " + $scope.wd.outside_radius.value + " " + $scope.wd.outside_radius.unit;            
