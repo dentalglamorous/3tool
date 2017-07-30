@@ -100,11 +100,11 @@
       <div class="col-sm-4 col-sm-offset-4" ng-show="isAllEmpty()">
         <p>
           The boxes 
-          <a href="#" ng-click="" ng-hide="hasTireWidth()">Tire Width</a> 
-          <a href="#" ng-click="" ng-hide="hasCompressionModulus()">Compression Modulus</a> 
-          <a href="#" ng-click="" ng-hide="hasOutsideRadius()">Outside Radius</a>
-          <a href="#" ng-click="" ng-hide="hasLoadOnWheel()">Load on Wheel</a>
-          <a href="#" ng-click="" ng-hide="hasTreadThickness()">Tread Thickness</a> 
+          <a href="#" ng-click="openDeflectionProperty('TW')" ng-hide="hasTireWidth()">Tire Width</a> 
+          <a href="#" ng-click="openDeflectionProperty('CM')" ng-hide="hasCompressionModulus()">Compression Modulus</a> 
+          <a href="#" ng-click="openDeflectionProperty('OR')" ng-hide="hasOutsideRadius()">Outside Radius</a>
+          <a href="#" ng-click="openDeflectionProperty('LOW')" ng-hide="hasLoadOnWheel()">Load on Wheel</a>
+          <a href="#" ng-click="openDeflectionProperty('TH')" ng-hide="hasTreadThickness()">Tread Thickness</a> 
           must be filled to do the calculations.
         </p>
       </div>
