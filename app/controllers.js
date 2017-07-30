@@ -164,7 +164,11 @@ tool3Controllers.controller('MainCtrl', ['$scope', '$rootScope', '$modal', '$win
 
     // check empty of wheel deflection properties
     $scope.isAllEmpty = function() {
-        return $scope.hasTireWidth() || $scope.hasCompressionModulus() || $scope.hasOutsideRadius || $scope.hasOutsideRadius || $scope.hasLoadOnWheel() || $scope.hasTreadThickness();
+        return $scope.hasTireWidth() && 
+                $scope.hasCompressionModulus() && 
+                $scope.hasOutsideRadius &&                 
+                $scope.hasLoadOnWheel() && 
+                $scope.hasTreadThickness();
     };
 
     $scope.openDeflectionProperty = function (dt) {

@@ -117,8 +117,8 @@
         </div>
       </div>
 
-      <div class="col-sm-4 col-sm-offset-4" ng-show="isAllEmpty()">
-        <p>
+      <div class="col-sm-4 col-sm-offset-4">
+        <p ng-hide="isAllEmpty()">
           The boxes 
           <a href="#" ng-click="openDeflectionProperty('TW')" ng-hide="hasTireWidth()">Tire Width</a> 
           <a href="#" ng-click="openDeflectionProperty('CM')" ng-hide="hasCompressionModulus()">Compression Modulus</a> 
