@@ -15,37 +15,158 @@ body {
     border: none;
 }
 
-.btn-tire-width {
-  z-index: 1000;
-  position: relative;
-  top: 40px;
-  left: -14px;
+
+@media only screen and (min-width: 320px) {
 }
 
-.btn-load-on-wheel {
-  z-index: 1000;
-  position: relative;
-  top: 210px;
-  left: -80px;
+@media only screen and (min-width: 480px) {
+
+    .btn-tire-width {
+      z-index: 1000;
+      position: relative;
+      top: 103px;
+      left: 171px;
+    }
+
+    .btn-compression-module {
+      z-index: 1000;
+      position: relative;
+      top: 165px;
+      left: 38px;
+    }
+
+    .btn-load-on-wheel {
+      z-index: 1000;
+      position: relative;
+      top: 265px;
+      left: 0px;
+    }
+
+    .btn-outside-radius {
+      z-index: 1000;
+      position: relative;
+      top: 345px;
+      left: 32px;
+    }
+
+    .btn-tread-thickness {
+      z-index: 1000;
+      position: relative;
+      top: 435px;
+      left: 168px;
+    }  
 }
 
-.btn-tread-thickness {
-  z-index: 1000;
-  position: relative;
-  top: 413px;
-  left: 50px;
+@media only screen and (min-width: 768px) {
+    .btn-tire-width {
+      z-index: 1000;
+      position: relative;
+      top: 60px;
+      left: 133px;
+    }
+
+    .btn-compression-module {
+      z-index: 1000;
+      position: relative;
+      top: 130px;
+      left: -10px;
+    }
+
+    .btn-load-on-wheel {
+      z-index: 1000;
+      position: relative;
+      top: 240px;
+      left: 0px;
+    }
+
+    .btn-outside-radius {
+      z-index: 1000;
+      position: relative;
+      top: 342px;
+      left: -355px;
+    }
+
+    .btn-tread-thickness {
+      z-index: 1000;
+      position: relative;
+      top: 430px;
+      left: -210px;
+    }    
 }
 
-.btn-compression-module {
-  z-index: 1000;
-  position: relative;
-  top: 100px;
-  left: 186px;
+
+@media only screen and (min-width: 992px) {    
+  
+  .btn-tire-width {
+    z-index: 1000;
+    position: relative;
+    top: 60px;
+    left: 160px;
+  }
+
+  .btn-compression-module {
+    z-index: 1000;
+    position: relative;
+    top: 120px;
+    left: 0px;
+  }
+
+  .btn-load-on-wheel {
+    z-index: 1000;
+    position: relative;
+    top: 225px;
+    left: -40px;
+  }
+
+  .btn-outside-radius {
+    z-index: 1000;
+    position: relative;
+    top: 345px;
+    left: -445px;
+  }
+
+  .btn-tread-thickness {
+    z-index: 1000;
+    position: relative;
+    top: 433px;
+    left: -320px;
+  }
 }
 
-.btn-outside-radius {
-  z-index: 1000;
-  position: relative;
-  top: 323px;
-  left: -50px;
+
+@media only screen and (min-width: 1200px) {   
+  .btn-tire-width {
+    z-index: 1000;
+    position: relative;
+    top: 60px;
+    left: 193px;
+  }
+
+  .btn-compression-module {
+    z-index: 1000;
+    position: relative;
+    top: 120px;
+    left: 15px;
+  }
+
+  .btn-load-on-wheel {
+    z-index: 1000;
+    position: relative;
+    top: 225px;
+    left: -70px;
+  }
+
+  .btn-outside-radius {
+    z-index: 1000;
+    position: relative;
+    top: 345px;
+    left: -500px;
+  }
+
+  .btn-tread-thickness {
+    z-index: 1000;
+    position: relative;
+    top: 433px;
+    left: -425px;
+  } 
 }

@@ -84,10 +84,10 @@ tool3Controllers.controller('MainCtrl', ['$scope', '$rootScope', '$modal', '$win
 
     // Function to dynamically generate label of tire width button
     $scope.tireWidthBtn = function () {
-        var label = "Tire Width";
+        var label = "0.0";
 
         if($scope.wd.tire_width.value != null && $scope.wd.tire_width.unit != null) {
-            label = label + " : " + $scope.wd.tire_width.value + " " + $scope.wd.tire_width.unit;            
+            label = $scope.wd.tire_width.value + " " + $scope.wd.tire_width.unit;            
         }
 
         return label;
@@ -95,10 +95,10 @@ tool3Controllers.controller('MainCtrl', ['$scope', '$rootScope', '$modal', '$win
 
     // Function to dynamically generate label of compression modulus button
     $scope.compressionModulusBtn = function () {
-        var label = "Compression Modulus";
+        var label = "0.0";
 
         if($scope.wd.compression_modulus.value != null && $scope.wd.compression_modulus.unit != null) {
-            label = label + " : " + $scope.wd.compression_modulus.value + " " + $scope.wd.compression_modulus.unit;            
+            label = $scope.wd.compression_modulus.value + " " + $scope.wd.compression_modulus.unit;            
         }
 
         return label;
@@ -106,10 +106,10 @@ tool3Controllers.controller('MainCtrl', ['$scope', '$rootScope', '$modal', '$win
 
     // Function to dynamically generate label of load on wheel button
     $scope.loadOnWheelBtn = function () {
-        var label = "Load on Wheel";
+        var label = "0.0";
 
         if($scope.wd.load_on_wheel.value != null && $scope.wd.load_on_wheel.unit != null) {
-            label = label + " : " + $scope.wd.load_on_wheel.value + " " + $scope.wd.load_on_wheel.unit;            
+            label = $scope.wd.load_on_wheel.value + " " + $scope.wd.load_on_wheel.unit;            
         }
 
         return label;
@@ -117,10 +117,10 @@ tool3Controllers.controller('MainCtrl', ['$scope', '$rootScope', '$modal', '$win
 
     // Function to dynamically generate label of tread thickness button
     $scope.treadThicknessBtn = function () {
-        var label = "Tread Thickness";
+        var label = "0.0";
 
         if($scope.wd.tread_thickness.value != null && $scope.wd.tread_thickness.unit != null) {
-            label = label + " : " + $scope.wd.tread_thickness.value + " " + $scope.wd.tread_thickness.unit;            
+            label = $scope.wd.tread_thickness.value + " " + $scope.wd.tread_thickness.unit;            
         }
 
         return label;
@@ -128,10 +128,10 @@ tool3Controllers.controller('MainCtrl', ['$scope', '$rootScope', '$modal', '$win
 
     // Function to dynamically generate label of outside radius button
     $scope.outsideRadiusBtn = function () {
-        var label = "Outside Radius";
+        var label = "0.0";
 
         if($scope.wd.outside_radius.value != null && $scope.wd.outside_radius.unit != null) {
-            label = label + " : " + $scope.wd.outside_radius.value + " " + $scope.wd.outside_radius.unit;            
+            label = $scope.wd.outside_radius.value + " " + $scope.wd.outside_radius.unit;            
         }
 
         return label;

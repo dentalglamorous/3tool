@@ -61,25 +61,47 @@
   
     <script type="text/ng-template" id="wheel-deflection.html">      
       <div class="row" style="z-index: 1000;">
-        <button class="btn btn-xs btn-compression-module" ng-class="compressionModulusBG()" ng-click="openDeflectionProperty('CM')">{{compressionModulusBtn()}}</button>
-        <button class="btn btn-xs btn-outside-radius" ng-class="outsideRadiusBG()" ng-click="openDeflectionProperty('OR')">{{outsideRadiusBtn()}}</button>
-        <button class="btn btn-xs btn-tire-width" ng-class="tireWidthBG()" ng-click="openDeflectionProperty('TW')">{{tireWidthBtn()}}</button>
-        <button class="btn btn-xs btn-tread-thickness" ng-class="treadThicknessBG()" ng-click="openDeflectionProperty('TH')">{{treadThicknessBtn()}}</button>
-        <button class="btn btn-xs btn-load-on-wheel" ng-class="loadOnWheelBG()" ng-click="openDeflectionProperty('LOW')">{{loadOnWheelBtn()}}</button>
-        
+        <div class="col-sm-2 pull-left btn-tire-width">
+          <button class="btn btn-xs" ng-class="tireWidthBG()" ng-click="openDeflectionProperty('TW')">Tire Width</button>
+          <br />
+          <span class="text-center">{{tireWidthBtn()}}</span>
+        </div>
+        <div class="col-sm-2 pull-left btn-compression-module">
+          <button class="btn btn-xs pull-left " ng-class="compressionModulusBG()" ng-click="openDeflectionProperty('CM')">Compression Modulus</button> 
+          <br />
+          <span class="text-center">{{compressionModulusBtn()}}</span>
+        </div>             
+        <div class="col-sm-2 pull-left btn-load-on-wheel">
+          <button class="btn btn-xs" ng-class="loadOnWheelBG()" ng-click="openDeflectionProperty('LOW')">Load on Wheel</button>        
+          <br />
+          <span class="text-center">{{loadOnWheelBtn()}}</span>
+        </div>               
+        <div class="col-sm-2 pull-left btn-outside-radius">
+          <button class="btn btn-xs " ng-class="outsideRadiusBG()" ng-click="openDeflectionProperty('OR')">Outside Radius</button>
+          <br />
+          <span class="text-center">{{outsideRadiusBtn()}}</span>
+        </div>        
+        <div class="col-sm-2 pull-left btn-tread-thickness">
+          <button class="btn btn-xs" ng-class="treadThicknessBG()" ng-click="openDeflectionProperty('TH')">Tread Thickness</button>
+          <br />
+          <span class="text-center">{{treadThicknessBtn()}}</span>
+        </div>        
       </div>      
       <div class="row">                
-        <div class="col-sm-4 col-sm-offset-4">          
+        <div class="col-sm-6">          
           <img src="./3tool/assets/images/new-cover-photo.png" style="width: 350px; padding:10px;" />
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <ng-include src="'calculation.html'"></ng-include>
+          </div>
         </div>        
       </div>               
-      <div class="row">
-          <ng-include src="'calculation.html'"></ng-include>
-      </div>   
+         
     </script>
 
     <script type="text/ng-template" id="calculation.html" ng-cloak>
-      <div class="col-sm-4 col-sm-offset-4" id="wheel-deflections">        
+      <div class="col-sm-8 col-sm-offset-2" id="wheel-deflections">        
         <div class="panel panel-primary text-left" style="background-color:#337ab7; color: #FFFFFF;">          
           <div class="panel-body">
             
@@ -117,7 +139,7 @@
         </div>
       </div>
 
-      <div class="col-sm-4 col-sm-offset-4">
+      <div class="col-sm-8 col-sm-offset-2">
         <p ng-hide="isAllEmpty()">
           The boxes 
           <a href="#" ng-click="openDeflectionProperty('TW')" ng-hide="hasTireWidth()">Tire Width</a> 
@@ -130,7 +152,7 @@
       </div>
 
       <!-- Share, Print & PDF Report buttons-->
-      <div class="col-sm-4 col-sm-offset-4">
+      <div class="col-sm-8 col-sm-offset-2">
         <div class="btn-group pull-left" role="group" aria-label="...">          
           <a type="button" class="btn btn-default" href="https://www.facebook.com/sharer.php?u=http://garage.angesoft.com/3tool" target="_blank">
             <i class="fa fa-facebook-official" style="font-size:18px; color: #337ab7;"></i>
