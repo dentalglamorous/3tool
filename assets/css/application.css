@@ -19,6 +19,48 @@ body {
 @media only screen and (min-width: 320px) {
 }
 
+/* iPhone 6: 375 x 667 */
+@media only screen and (min-width: 375px) {
+
+    .btn-tire-width {
+      z-index: 1000;
+      position: relative;
+      top: 145px;
+      left: 143px;
+    }
+
+    .btn-compression-module {
+      z-index: 1000;
+      position: relative;
+      top: 210px;
+      left: 10px;
+    }
+
+    .btn-load-on-wheel {
+      z-index: 1000;
+      position: relative;
+      top: 265px;
+      left: 240px;
+    }
+
+    .btn-outside-radius {
+      z-index: 1000;
+      position: relative;
+      top: 377px;
+      left: -120px;
+    }
+
+    .btn-tread-thickness {
+      z-index: 1000;
+      position: relative;
+      top: 435px;
+      left: 270px;
+    }  
+}
+
+
+
+
 @media only screen and (min-width: 480px) {
 
     .btn-tire-width {
@@ -54,6 +96,45 @@ body {
       position: relative;
       top: 435px;
       left: 168px;
+    }  
+}
+
+/* iPhone 6 wide scren: 667 */
+@media only screen and (min-width: 667px) {
+
+    .btn-tire-width {
+      z-index: 1000;
+      position: relative;
+      top: 103px;
+      left: 264px;
+    }
+
+    .btn-compression-module {
+      z-index: 1000;
+      position: relative;
+      top: 165px;
+      left: 132px;
+    }
+
+    .btn-load-on-wheel {
+      z-index: 1000;
+      position: relative;
+      top: 265px;
+      left: 100px;
+    }
+
+    .btn-outside-radius {
+      z-index: 1000;
+      position: relative;
+      top: 378px;
+      left: -260px;
+    }
+
+    .btn-tread-thickness {
+      z-index: 1000;
+      position: relative;
+      top: 433px;
+      left: 395px;
     }  
 }
 
