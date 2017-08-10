@@ -62,29 +62,34 @@
     <script type="text/ng-template" id="wheel-deflection.html">      
       <div class="row" style="z-index: 1000;">
         <div class="col-sm-2 pull-left btn-tire-width">
-          <button class="btn btn-xs" ng-class="tireWidthBG()" ng-click="openDeflectionProperty('TW')">Tire Width</button>
-          <br />
-          <span class="text-center">{{tireWidthBtn()}}</span>
+          <button class="btn btn-xs" ng-class="tireWidthBG()" ng-click="openDeflectionProperty('TW')">
+            Tire Width <br />
+            <span class="text-center">{{tireWidthBtn()}}</span>
+          </button>          
         </div>
         <div class="col-sm-2 pull-left btn-compression-module">
-          <button class="btn btn-xs pull-left " ng-class="compressionModulusBG()" ng-click="openDeflectionProperty('CM')">Compression Modulus</button> 
-          <br />
-          <span class="text-center">{{compressionModulusBtn()}}</span>
+          <button class="btn btn-xs pull-left " ng-class="compressionModulusBG()" ng-click="openDeflectionProperty('CM')">
+            Compression Modulus <br />
+            <span class="text-center">{{compressionModulusBtn()}}</span>
+          </button>           
         </div>             
         <div class="col-sm-2 pull-left btn-load-on-wheel">
-          <button class="btn btn-xs" ng-class="loadOnWheelBG()" ng-click="openDeflectionProperty('LOW')">Load on Wheel</button>        
-          <br />
-          <span class="text-center">{{loadOnWheelBtn()}}</span>
+          <button class="btn btn-xs" ng-class="loadOnWheelBG()" ng-click="openDeflectionProperty('LOW')">
+            Load on Wheel <br />
+            <span class="text-center">{{loadOnWheelBtn()}}</span>
+          </button>                  
         </div>               
         <div class="col-sm-2 pull-left btn-outside-radius">
-          <button class="btn btn-xs " ng-class="outsideRadiusBG()" ng-click="openDeflectionProperty('OR')">Outside Radius</button>
-          <br />
-          <span class="text-center">{{outsideRadiusBtn()}}</span>
+          <button class="btn btn-xs " ng-class="outsideRadiusBG()" ng-click="openDeflectionProperty('OR')">
+            Outside Radius <br />
+            <span class="text-center">{{outsideRadiusBtn()}}</span>
+          </button>          
         </div>        
         <div class="col-sm-2 pull-left btn-tread-thickness">
-          <button class="btn btn-xs" ng-class="treadThicknessBG()" ng-click="openDeflectionProperty('TH')">Tread Thickness</button>
-          <br />
-          <span class="text-center">{{treadThicknessBtn()}}</span>
+          <button class="btn btn-xs" ng-class="treadThicknessBG()" ng-click="openDeflectionProperty('TH')">
+            Tread Thickness <br />
+            <span class="text-center">{{treadThicknessBtn()}}</span>
+          </button>          
         </div>        
       </div>      
       <div class="row">                
@@ -96,8 +101,7 @@
             <ng-include src="'calculation.html'"></ng-include>
           </div>
         </div>        
-      </div>               
-         
+      </div>                        
     </script>
 
     <script type="text/ng-template" id="calculation.html" ng-cloak>
